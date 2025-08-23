@@ -30,9 +30,9 @@ export async function POST(req: Request) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "CoachPal <info@coachpal.io>",
+      from: "Coach OS <info@coachpal.io>",
       to: NOTIFICATION_RECIPIENT_EMAIL,
-      subject: "New CoachPal Question 👀",
+      subject: "New Coach OS Question 👀",
       react: await QuestionEmailTemplate({
         email,
         name,

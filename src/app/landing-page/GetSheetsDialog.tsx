@@ -19,7 +19,6 @@ export type TurnstileStatus = "success" | "error" | "expired" | "required";
 
 const FREE_TIER_MESSAGE = `Register your interest in Coach OS - the AI-first fitness coaching platform. Enter your details below for early access to demonstrations and pre-registration updates.`;
 
-const PREMIUM_TIER_MESSAGE = `Get immediate access to our standard coaching tools while we prepare your Premium features. After submitting, you'll receive the free resources by email, and we'll contact you within 24 hours to set up your 1-month free trial with automated data imports.`;
 
 // Validation rules type
 type BaseValidationRule = {
@@ -134,11 +133,9 @@ const findFirstErrorMessage = (errors: FormErrors): string | undefined => {
 };
 
 export default function GetSheetsDialog({
-  isPremium,
   variant,
   buttonColor = "dark/zinc",
 }: {
-  isPremium: boolean;
   variant: "hero" | "pricing";
   buttonColor?: ButtonProps["color"];
 }) {
@@ -282,7 +279,7 @@ export default function GetSheetsDialog({
       name: formValues.name,
       email: formValues.email,
       clientVolume: formValues.clientVolume,
-      isPremium,
+      communicationConsent: true,
     };
 
     const response = await fetch("/api/coaching-sheet-registration", {
@@ -329,16 +326,14 @@ export default function GetSheetsDialog({
           setIsOpen(true);
         }}
       >
-        {isPremium ? "Start Free Trial" : "Register Interest"}
+Register Interest
       </Button>
       <Dialog open={isOpen} onClose={handleCloseDialog}>
         <DialogTitle>
-          {isPremium
-            ? "CoachPal 1-Month Free Trial"
-            : "Register for Coach OS Early Access"}
+          Register for Coach OS Early Access
         </DialogTitle>
         <Description>
-          {isPremium ? PREMIUM_TIER_MESSAGE : FREE_TIER_MESSAGE}
+          {FREE_TIER_MESSAGE}
         </Description>
         <form onSubmit={handleSubmit}>
           <DialogBody>
@@ -376,13 +371,13 @@ export default function GetSheetsDialog({
               <Select
                 name="clientVolume"
                 value={formValues.clientVolume}
-                onChange={(e) => {
-                  const event = {
-                    target: { name: "clientVolume", value: e.target.value },
+                onChange={(event) => {
+                  const changeEvent = {
+                    target: { name: "clientVolume", value: event.target.value },
                   } as React.ChangeEvent<HTMLInputElement>;
-                  handleChange(event);
+                  handleChange(changeEvent);
                 }}
-                onBlur={(e) => {
+                onBlur={() => {
                   const event = {
                     target: { name: "clientVolume" },
                   } as React.FocusEvent<HTMLInputElement>;

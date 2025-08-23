@@ -1,5 +1,6 @@
-import { JSX, SVGProps } from "react";
+// import { JSX, SVGProps } from "react";
 
+/*
 const navigation = [
   {
     name: "GitHub",
@@ -28,6 +29,7 @@ const navigation = [
     ),
   },
 ];
+*/
 
 export default function Footer() {
   return (

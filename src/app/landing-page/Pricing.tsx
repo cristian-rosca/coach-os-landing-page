@@ -110,7 +110,7 @@ export default function Pricing() {
                 ))}
               </ul>
               <div className="mt-6 flex w-full">
-                <GetSheetsDialog isPremium={tier.name === "Premium"} variant="pricing" buttonColor={tier.name === "Premium" ? 'indigo' : 'dark/zinc'} />
+                <GetSheetsDialog variant="pricing" buttonColor={tier.name === "Premium" ? 'indigo' : 'dark/zinc'} />
               </div>
             </div>
           ))}

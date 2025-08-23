@@ -1,7 +1,6 @@
 import AskAQuestion from "./landing-page/AskAQuestion";
 import CoachPalFeatures from "./landing-page/CoachPalFeatures";
 import { Container } from "./landing-page/Container";
-import FAQs from "./landing-page/FAQs";
 import Hero from "./landing-page/Hero";
 
 export default function Home() {

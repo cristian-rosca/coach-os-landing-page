@@ -3,7 +3,6 @@ import {
   CircleStackIcon,
   CalculatorIcon,
   UserGroupIcon,
-  TrophyIcon,
   ChartBarIcon,
   DocumentTextIcon,
   CheckBadgeIcon,

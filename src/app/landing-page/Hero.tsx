@@ -22,7 +22,6 @@ export default function Hero() {
       <div className="mt-10 flex items-center justify-center gap-4">
         <AlertProvider>
           <GetSheetsDialog
-            isPremium={false}
             variant="hero"
             buttonColor="zinc"
           />

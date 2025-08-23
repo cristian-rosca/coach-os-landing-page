@@ -257,6 +257,7 @@ export default function QuestionDialog() {
       name: formValues.name,
       email: formValues.email,
       message: formValues.message,
+      communicationConsent: true,
     };
 
     const response = await fetch("/api/send-question", {

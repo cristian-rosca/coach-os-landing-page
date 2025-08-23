@@ -2,19 +2,17 @@ interface EmailTemplateProps {
   heading: string
   name: string;
   email: string;
-  communicationConsent: boolean
-  isPremium: boolean;
+  clientVolume: string;
 }
 
 export const BasicContactEmail: React.FC<
   Readonly<EmailTemplateProps>
-> = ({ heading, email, name, communicationConsent, isPremium }) => (
+> = ({ heading, email, name, clientVolume }) => (
   
   <div>
     <h1>{heading}</h1>
     <p>Name: {name}</p>
     <p>Email: {email}</p>
-    <p>Communication Consent: {communicationConsent ? "Yes" : "No"}</p>
-    <p>Premium User: {isPremium ? "Yes" : "No"}</p>
+    <p>Client Volume: {clientVolume}</p>
   </div>
 );
