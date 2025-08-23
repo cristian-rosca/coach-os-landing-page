@@ -13,10 +13,10 @@ export default function Hero() {
       </Heading>
 
       <p className="mt-8 font-sans text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-        Save hours of manual labour with AI-powered program generation, and
-        natural voice interactions. Allow your client to track in whatever way
+        Save hours of admin work with AI-powered program generation, and
+        voice interactions. Allow your client to track in whatever way
         suits them best, while Coach OS automatically consolidates all their
-        data and show you the insights that matter.
+        data and shows you the insights that matter.
       </p>
 
       <div className="mt-10 flex items-center justify-center gap-4">
