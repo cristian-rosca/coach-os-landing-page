@@ -5,7 +5,6 @@ import { Container } from "./landing-page/Container";
 import LandingPageNavigation from "./landing-page/LandingPageNavigation";
 import Footer from "./landing-page/Footer";
 import clsx from "clsx";
-import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://coachpal.io"),
@@ -34,8 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function PublicLayout({
   children,
 }: {
@@ -43,7 +40,7 @@ export default function PublicLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(inter.className, "flex min-h-screen flex-col")}>
+      <body className={clsx("flex min-h-screen flex-col")}>
         <div className="relative isolate overflow-hidden">
           <BackgroundPattern />
           <Container className="pt-8">

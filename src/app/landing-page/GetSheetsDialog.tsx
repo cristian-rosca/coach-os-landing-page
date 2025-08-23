@@ -231,7 +231,6 @@ export default function GetSheetsDialog({
       return;
     }
 
-
     if (turnstileStatus !== "success") {
       showErrorAlert(
         "We could not verify you are not a robot. Please try submitting the form again."
@@ -330,7 +329,7 @@ export default function GetSheetsDialog({
           setIsOpen(true);
         }}
       >
-{isPremium ? "Start Free Trial" : "Register Interest"}
+        {isPremium ? "Start Free Trial" : "Register Interest"}
       </Button>
       <Dialog open={isOpen} onClose={handleCloseDialog}>
         <DialogTitle>
@@ -379,13 +378,13 @@ export default function GetSheetsDialog({
                 value={formValues.clientVolume}
                 onChange={(e) => {
                   const event = {
-                    target: { name: "clientVolume", value: e.target.value }
+                    target: { name: "clientVolume", value: e.target.value },
                   } as React.ChangeEvent<HTMLInputElement>;
                   handleChange(event);
                 }}
                 onBlur={(e) => {
                   const event = {
-                    target: { name: "clientVolume" }
+                    target: { name: "clientVolume" },
                   } as React.FocusEvent<HTMLInputElement>;
                   handleBlur(event);
                 }}

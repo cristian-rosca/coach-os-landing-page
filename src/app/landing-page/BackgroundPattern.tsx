@@ -4,7 +4,7 @@ export default function BackgroundPattern() {
   return (
     <>
       <GridPattern
-        className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-gray-50 stroke-gray-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] dark:fill-gray-900/20 dark:stroke-white/5"
+        className="absolute inset-x-0 -top-14 z-0 h-[1000px] w-full fill-gray-50 stroke-gray-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] dark:fill-white/6 dark:stroke-white/7 pointer-events-auto"
         yOffset={-96}
         interactive
       />

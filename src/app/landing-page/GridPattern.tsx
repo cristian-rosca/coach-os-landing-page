@@ -82,10 +82,13 @@ export function GridPattern({
       })
     }
 
-    window.addEventListener('mousemove', onMouseMove)
+    const svgElement = ref.current
+    if (!svgElement) return
+    
+    svgElement.addEventListener('mousemove', onMouseMove)
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove)
+      svgElement.removeEventListener('mousemove', onMouseMove)
     }
   }, [yOffset, interactive])
 
@@ -101,8 +104,8 @@ export function GridPattern({
             key={block[2]}
             x={block[0]}
             y={block[1]}
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 1, times: [0, 0, 1] }}
+            animate={{ opacity: [0, 0.8, 0] }}
+            transition={{ duration: 1.2, times: [0, 0.3, 1] }}
             onAnimationComplete={() => {
               setHoveredBlocks((blocks) =>
                 blocks.filter((b) => b[2] !== block[2]),
