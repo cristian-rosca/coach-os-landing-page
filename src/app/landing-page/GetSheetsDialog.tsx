@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Field as HeadlessField } from "@headlessui/react";
 import { Button, ButtonProps } from "@/app/templates/button";
-import { Checkbox } from "@/app/templates/checkbox";
 import {
   Dialog,
   DialogActions,
@@ -12,14 +10,14 @@ import {
 } from "@/app/templates/dialog";
 import { Description, Field, Label } from "@/app/templates/fieldset";
 import { Input } from "@/app/templates/input";
-import { Link } from "@/app/templates/link";
 import { Text } from "@/app/templates/text";
+import { Select } from "@/app/templates/select";
 import { Turnstile } from "next-turnstile";
 import { useAlert } from "@/app/contexts/AlertContext";
 
 export type TurnstileStatus = "success" | "error" | "expired" | "required";
 
-const FREE_TIER_MESSAGE = `Enter your name and email below to get instant access to our complete set of free coaching systems.`;
+const FREE_TIER_MESSAGE = `Register your interest in Coach OS - the AI-first fitness coaching platform. Enter your details below for early access to demonstrations and pre-registration updates.`;
 
 const PREMIUM_TIER_MESSAGE = `Get immediate access to our standard coaching tools while we prepare your Premium features. After submitting, you'll receive the free resources by email, and we'll contact you within 24 hours to set up your 1-month free trial with automated data imports.`;
 
@@ -33,6 +31,7 @@ type BaseValidationRule = {
 type ValidationRules = {
   name: BaseValidationRule;
   email: BaseValidationRule;
+  clientVolume: BaseValidationRule;
 };
 
 const VALIDATION_RULES: ValidationRules = {
@@ -44,18 +43,23 @@ const VALIDATION_RULES: ValidationRules = {
     required: true,
     pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
+  clientVolume: {
+    required: true,
+  },
 };
 
 // Form field types
 type FormValues = {
   name: string;
   email: string;
+  clientVolume: string;
 };
 
 // Form errors type
 type FormErrors = {
   name?: string;
   email?: string;
+  clientVolume?: string;
 };
 
 // Form touched fields type
@@ -64,6 +68,7 @@ type TouchedFields = Record<keyof FormValues, boolean>;
 const DEFAULT_FORM_VALUES: FormValues = {
   name: "",
   email: "",
+  clientVolume: "",
 };
 
 const DEFAULT_FORM_ERRORS: FormErrors = {};
@@ -71,12 +76,14 @@ const DEFAULT_FORM_ERRORS: FormErrors = {};
 const DEFAULT_FORM_TOUCHED: TouchedFields = {
   name: false,
   email: false,
+  clientVolume: false,
 };
 
 // Constant for when all fields need to be marked as touched during validation
 const ALL_TOUCHED: TouchedFields = {
   name: true,
   email: true,
+  clientVolume: true,
 };
 
 /**
@@ -112,6 +119,10 @@ const validateField = (
     return `Invalid ${name} format`;
   }
 
+  if (name === "clientVolume" && rules.required && !value) {
+    return "Please select your current client volume";
+  }
+
   return undefined;
 };
 
@@ -132,7 +143,6 @@ export default function GetSheetsDialog({
   buttonColor?: ButtonProps["color"];
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [checked, setChecked] = useState(false); // For terms and conditions
   const [isSending, setIsSending] = useState(false);
   const [turnstileStatus, setTurnstileStatus] =
     useState<TurnstileStatus>("required");
@@ -152,7 +162,6 @@ export default function GetSheetsDialog({
     setFormValues(DEFAULT_FORM_VALUES);
     setTouched(DEFAULT_FORM_TOUCHED);
     setErrors(DEFAULT_FORM_ERRORS);
-    setChecked(false);
   };
 
   // Validate all fields
@@ -222,10 +231,6 @@ export default function GetSheetsDialog({
       return;
     }
 
-    if (!checked) {
-      showErrorAlert("Please agree to the terms and conditions");
-      return;
-    }
 
     if (turnstileStatus !== "success") {
       showErrorAlert(
@@ -277,8 +282,7 @@ export default function GetSheetsDialog({
     const data = {
       name: formValues.name,
       email: formValues.email,
-      communicationConsent:
-        formData.get("communicationConsent") === "on" ? true : false,
+      clientVolume: formValues.clientVolume,
       isPremium,
     };
 
@@ -302,17 +306,18 @@ export default function GetSheetsDialog({
     resetForm(); // Reset form fields and validation states
     setIsOpen(false); // Close dialog
     showSuccessAlert(
-      "You will receive an email with the link to the system shortly."
+      "Thank you for your interest in Coach OS! You will receive updates on early access and demonstrations."
     );
   };
 
   const isSubmitDisabled =
     isSending ||
-    !checked ||
     !!errors.name ||
     !!errors.email ||
+    !!errors.clientVolume ||
     !formValues.name ||
-    !formValues.email;
+    !formValues.email ||
+    !formValues.clientVolume;
 
   return (
     <>
@@ -325,13 +330,13 @@ export default function GetSheetsDialog({
           setIsOpen(true);
         }}
       >
-        {isPremium ? "Start Free Trial" : "Get Free Systems"}
+{isPremium ? "Start Free Trial" : "Register Interest"}
       </Button>
       <Dialog open={isOpen} onClose={handleCloseDialog}>
         <DialogTitle>
           {isPremium
             ? "CoachPal 1-Month Free Trial"
-            : "Get your CoachPal Free Systems"}
+            : "Register for Coach OS Early Access"}
         </DialogTitle>
         <Description>
           {isPremium ? PREMIUM_TIER_MESSAGE : FREE_TIER_MESSAGE}
@@ -339,7 +344,7 @@ export default function GetSheetsDialog({
         <form onSubmit={handleSubmit}>
           <DialogBody>
             <Field>
-              <Label>Name</Label>
+              <Label>Coach Name</Label>
               <Input
                 name="name"
                 placeholder="John Doe"
@@ -353,7 +358,7 @@ export default function GetSheetsDialog({
               )}
             </Field>
             <Field className="mt-4">
-              <Label>Email</Label>
+              <Label>Email Address</Label>
               <Input
                 name="email"
                 type="email" // Good practice for input type
@@ -365,6 +370,35 @@ export default function GetSheetsDialog({
               />
               {touched.email && errors.email && (
                 <Text className="mt-1 text-sm">{errors.email}</Text>
+              )}
+            </Field>
+            <Field className="mt-4">
+              <Label>Current Client Volume</Label>
+              <Select
+                name="clientVolume"
+                value={formValues.clientVolume}
+                onChange={(e) => {
+                  const event = {
+                    target: { name: "clientVolume", value: e.target.value }
+                  } as React.ChangeEvent<HTMLInputElement>;
+                  handleChange(event);
+                }}
+                onBlur={(e) => {
+                  const event = {
+                    target: { name: "clientVolume" }
+                  } as React.FocusEvent<HTMLInputElement>;
+                  handleBlur(event);
+                }}
+                required
+              >
+                <option value="">Select client volume</option>
+                <option value="1-10">1-10 clients</option>
+                <option value="11-25">11-25 clients</option>
+                <option value="26-50">26-50 clients</option>
+                <option value="50+">50+ clients</option>
+              </Select>
+              {touched.clientVolume && errors.clientVolume && (
+                <Text className="mt-1 text-sm">{errors.clientVolume}</Text>
               )}
             </Field>
             <div className="h-4">
@@ -393,31 +427,6 @@ export default function GetSheetsDialog({
                 }}
               />
             </div>
-            <HeadlessField className="mt-6 flex items-center justify-end gap-2 ">
-              <Text>Email me when new tools and resources are released</Text>
-              <Checkbox name="communicationConsent" />
-            </HeadlessField>
-            <HeadlessField className="mt-6 flex items-center justify-end gap-2 ">
-              <Text>
-                I agree to the{" "}
-                <Link
-                  className="font-bold text-indigo-600"
-                  href={`/privacy-policy`}
-                  target="_blank"
-                >
-                  privacy policy
-                </Link>{" "}
-                and{" "}
-                <Link
-                  className="font-bold text-indigo-600"
-                  href={`/terms-and-conditions`}
-                  target="_blank"
-                >
-                  terms and conditions
-                </Link>
-              </Text>
-              <Checkbox name="terms" checked={checked} onChange={setChecked} />
-            </HeadlessField>
           </DialogBody>
 
           <DialogActions>

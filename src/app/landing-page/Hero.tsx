@@ -1,6 +1,5 @@
 import { Heading } from "@/app/templates/heading";
 import GetSheetsDialog from "./GetSheetsDialog";
-import ScrollToPremiumButton from "./ScrollToPremiumButton";
 import { AlertProvider } from "../contexts/AlertContext";
 
 export default function Hero() {
@@ -8,22 +7,16 @@ export default function Hero() {
     <>
       <Heading
         level={1}
-        className="font-display text-4xl font-medium tracking-tight [text-wrap:balance] sm:text-6xl"
+        className="font-display text-4xl font-medium tracking-tight [text-wrap:balance] sm:text-6xl bg-gradient-to-br from-white to-muted-foreground bg-clip-text text-transparent"
       >
-        Built by coaches,
-        <br />
-        for coaches.
+        AI-First Fitness Coaching
       </Heading>
 
-      <p className="mt-6 text-lg">
-        You got into this industry to transform people, not to wrestle with
-        technology or build systems from scratch. Get proven coaching systems
-        that deliver premium client experiences and accelerate results -
-        completely{" "}
-        <span className="whitespace-nowrap font-bold text-indigo-600">
-          free forever
-        </span>
-        . Focus on what you do best: changing lives, not chasing data.
+      <p className="mt-6 text-lg text-muted-foreground">
+        Save hours of manual labour with AI-powered program generation, and
+        natural voice interactions. Allow your client to track in whatever way
+        suits them best, while Coach OS automatically consolidates all their
+        data and show you the insights that matter.
       </p>
 
       <div className="mt-8 flex items-center justify-center gap-4">
@@ -31,10 +24,9 @@ export default function Hero() {
           <GetSheetsDialog
             isPremium={false}
             variant="hero"
-            buttonColor="indigo"
+            buttonColor="zinc"
           />
         </AlertProvider>
-        <ScrollToPremiumButton />
       </div>
     </>
   );

@@ -14,7 +14,7 @@ export default function Home() {
         <div className="relative aspect-video w-full">
           <iframe
             className="absolute inset-0 h-full w-full border-0"
-            src="https://www.tella.tv/video/cmbqapfo600030bjp8rrua8ti/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0"
+            src="https://www.tella.tv/video/coach-os-91ak/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0"
             title="CoachPal Video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

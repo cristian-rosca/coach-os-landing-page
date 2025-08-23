@@ -5,7 +5,9 @@ export default function LandingPageNavigation() {
     <Navbar>
       <NavbarSection>
         <NavbarItem href="/" current>
-          <h1 className="text-4xl font-bold gradient-text">Coach OS</h1>
+          <div className="text-2xl font-bold bg-gradient-to-r from-white to-muted-foreground bg-clip-text text-transparent">
+            Coach OS
+          </div>
         </NavbarItem>
       </NavbarSection>
     </Navbar>

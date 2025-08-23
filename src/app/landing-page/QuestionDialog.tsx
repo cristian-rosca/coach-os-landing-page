@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/app/templates/button";
-import { Checkbox } from "@/app/templates/checkbox";
 import {
   Dialog,
   DialogActions,
@@ -10,11 +9,9 @@ import {
 } from "@/app/templates/dialog";
 import { Description, Field, Label } from "@/app/templates/fieldset";
 import { Input } from "@/app/templates/input";
-import { Link } from "@/app/templates/link";
 import { Text } from "@/app/templates/text";
 import { Textarea } from "@/app/templates/textarea";
 import { useState } from "react";
-import { Field as HeadlessField } from "@headlessui/react";
 import { TurnstileStatus } from "./GetSheetsDialog"; // Assuming this path is correct
 import { Turnstile } from "next-turnstile";
 import { useAlert } from "@/app/contexts/AlertContext";
@@ -127,7 +124,6 @@ export default function QuestionDialog() {
   const [turnstileStatus, setTurnstileStatus] =
     useState<TurnstileStatus>("required");
   const [isOpen, setIsOpen] = useState(false);
-  const [checked, setChecked] = useState(false); // For terms and conditions
   const [isSending, setIsSending] = useState(false);
 
   const { showErrorAlert, showSuccessAlert } = useAlert(); 
@@ -140,7 +136,6 @@ export default function QuestionDialog() {
     setFormValues(DEFAULT_FORM_VALUES);
     setTouched(DEFAULT_FORM_TOUCHED);
     setErrors(DEFAULT_FORM_ERRORS);
-    setChecked(false);
   };
 
   const handleOpenDialog = () => {
@@ -218,10 +213,6 @@ export default function QuestionDialog() {
       return;
     }
 
-    if (!checked) {
-      showErrorAlert("Please agree to the terms and conditions");
-      return;
-    }
 
     if (turnstileStatus !== "success") {
       showErrorAlert("We could not verify you are not a robot. Please try submitting the form again.");
@@ -266,8 +257,6 @@ export default function QuestionDialog() {
       name: formValues.name,
       email: formValues.email,
       message: formValues.message,
-      communicationConsent:
-        formData.get("communicationConsent") === "on" ? true : false,
     };
 
     const response = await fetch("/api/send-question", {
@@ -294,7 +283,6 @@ export default function QuestionDialog() {
 
   const isSubmitDisabled =
     isSending ||
-    !checked ||
     !!errors.name ||
     !!errors.email ||
     !!errors.message ||
@@ -388,31 +376,6 @@ export default function QuestionDialog() {
                 }}
               />
             </div>
-            <HeadlessField className="mt-6 flex items-center justify-end gap-2 ">
-              <Text>Email me when new tools and resources are released</Text>
-              <Checkbox name="communicationConsent" />
-            </HeadlessField>
-            <HeadlessField className="mt-6 flex items-center justify-end gap-2 ">
-              <Text>
-                I agree to the{" "}
-                <Link
-                  className="font-bold text-indigo-600"
-                  href={`/privacy-policy`}
-                  target="_blank"
-                >
-                  privacy policy
-                </Link>{" "}
-                and{" "}
-                <Link
-                  className="font-bold text-indigo-600"
-                  href={`/terms-and-conditions`}
-                  target="_blank"
-                >
-                  terms and conditions
-                </Link>
-              </Text>
-              <Checkbox name="terms" checked={checked} onChange={setChecked} />
-            </HeadlessField>
           </DialogBody>
           <DialogActions>
             <Button plain onClick={handleCloseDialog}>
