@@ -1,8 +1,8 @@
-import { QuestionEmailTemplate } from "@/app/components/landing-page/QuestionEmailTemplate";
 import { Resend } from "resend";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import { NOTIFICATION_RECIPIENT_EMAIL } from "@/app/util/constants";
+import { QuestionEmailTemplate } from "@/app/landing-page/QuestionEmailTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -33,7 +33,12 @@ export async function POST(req: Request) {
       from: "CoachPal <info@coachpal.io>",
       to: NOTIFICATION_RECIPIENT_EMAIL,
       subject: "New CoachPal Question 👀",
-      react: QuestionEmailTemplate({ email, name, message, communicationConsent }),
+      react: await QuestionEmailTemplate({
+        email,
+        name,
+        message,
+        communicationConsent,
+      }),
     });
 
     if (error) {

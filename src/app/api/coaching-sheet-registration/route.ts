@@ -1,4 +1,4 @@
-import { BasicContactEmail } from "@/app/components/landing-page/BasicContactEmail";
+import { BasicContactEmail } from "@/app/landing-page/BasicContactEmail";
 import { Resend } from "resend";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextResponse } from "next/server";
