@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="w-screen pt-16">
       <div className="mx-auto pb-12 md:flex md:items-center md:justify-between">
-        <div className="flex justify-center space-x-6 md:order-2">
+        {/* <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -45,10 +45,10 @@ export default function Footer() {
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
-        </div>
+        </div> */}
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-xs leading-5 text-gray-500">
-            &copy; {new Date().getFullYear()} CoachPal, Limited. All
+            &copy; {new Date().getFullYear()} Coach OS, Limited. All
             rights reserved.
           </p>
         </div>

@@ -4,7 +4,7 @@ import { AlertProvider } from "@/app/contexts/AlertContext";
 
 export default function AskAQuestion() {
   return (
-    <div>
+    <div className="justify-center text-center">
       <Subheading level={2} className="text-2xl/8 font-medium sm:text-3xl/8">
         Looking for something else?{" "}
       </Subheading>

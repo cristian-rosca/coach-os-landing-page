@@ -292,7 +292,7 @@ export default function QuestionDialog() {
 
   return (
     <>
-    <div className="flex justify-center md:justify-start">
+    <div className="flex justify-center">
       <Button 
         type="button" 
         onClick={handleOpenDialog} 

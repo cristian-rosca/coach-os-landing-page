@@ -46,7 +46,7 @@ const features = [
 const CoachPalFeatures = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ref} data-section="premium-features" className="mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2">
         <div className="lg:pr-4 lg:pt-4">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
             <p className="text-base/7 font-semibold text-primary">
@@ -72,7 +72,7 @@ const CoachPalFeatures = forwardRef<HTMLDivElement>((props, ref) => {
             </dl>
           </div>
         </div>
-          <div className="relative hidden md:block isolate overflow-hidden rounded-3xl bg-accent pt-8 sm:mx-auto sm:max-w-2xl sm:pl-16 sm:pr-0 sm:pt-16 lg:mx-0 lg:max-w-none">
+          <div className="relative hidden md:block isolate overflow-hidden rounded-3xl bg-accent pt-8 sm:mx-auto sm:max-w-2xl sm:pl-16 sm:pr-0 sm:pt-16 lg:mx-0 lg:max-w-none lg:self-end">
             <div
               aria-hidden="true"
               className="absolute -inset-y-px -left-3 -z-10 w-full origin-bottom-left skew-x-[-30deg] bg-muted opacity-20 ring-1 ring-inset ring-border"
@@ -83,7 +83,7 @@ const CoachPalFeatures = forwardRef<HTMLDivElement>((props, ref) => {
                 src={screenshot}
                 width={1150}
                 height={600}
-                className="w-228 -mb-12 max-w-none rounded-tl-xl bg-background ring-1 ring-border"
+                className="-mb-12 max-w-none rounded-tl-xl bg-background ring-1 ring-border"
               />
             </div>
             <div

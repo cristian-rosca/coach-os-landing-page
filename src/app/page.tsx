@@ -24,10 +24,10 @@ export default function Home() {
       <Container className="mt-28 md:mt-44">
         <CoachPalFeatures />
       </Container>
-      <Container className="mt-28 md:mt-36">
+      {/* <Container className="mt-28 md:mt-36">
         <FAQs />
-      </Container>
-      <Container className="md:mb-12 mt-24">
+      </Container> */}
+      <Container className="md:mb-12 mt-40">
         <AskAQuestion />
       </Container>
     </>
