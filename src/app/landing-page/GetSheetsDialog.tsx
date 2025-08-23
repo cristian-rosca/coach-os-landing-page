@@ -402,7 +402,7 @@ Register Interest
                 appearance="interaction-only"
                 refreshExpired="auto"
                 sandbox={process.env.NODE_ENV === "development"}
-                theme="auto"
+                theme="dark"
                 onError={() => {
                   setTurnstileStatus("error");
                   showErrorAlert("Security check failed. Please try again.");

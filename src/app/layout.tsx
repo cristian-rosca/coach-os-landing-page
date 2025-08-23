@@ -38,7 +38,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={clsx("flex min-h-screen flex-col")}>
         <div className="relative isolate overflow-hidden">
           <BackgroundPattern />
