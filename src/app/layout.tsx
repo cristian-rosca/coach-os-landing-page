@@ -7,20 +7,19 @@ import Footer from "./landing-page/Footer";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://coachpal.io"),
-  title: "CoachPal | Made for coaches, by coaches.",
+  // metadataBase: new URL("https://coachpal.io"),
+  title: "Coach OS | AI-native fitness coaching.",
   description:
-    "Grab your FREE best-in-class online coaching systems. Supercharge your coaching systems with CoachPal.",
+    "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
   keywords: [
-    "free coaching sheets",
-    "online coaching systems",
-    "online coaching Google Sheets",
-    "coaching tools",
-    "coaching systems",
+    "fitness coaching",
+    "ai coaching",
+    "ai personal training",
+    "ai fitness coaching",
   ],
-  alternates: {
-    canonical: "https://coachpal.io",
-  },
+  // alternates: {
+  //   canonical: "https://coachpal.io",
+  // },
   robots: {
     index: true,
     follow: true,
