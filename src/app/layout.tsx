@@ -7,7 +7,7 @@ import Footer from "./landing-page/Footer";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("https://coachpal.io"),
+  metadataBase: new URL("https://coachos.fit"),
   title: "Coach OS | AI-native fitness coaching.",
   description:
     "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
@@ -17,9 +17,31 @@ export const metadata: Metadata = {
     "ai personal training",
     "ai fitness coaching",
   ],
-  // alternates: {
-  //   canonical: "https://coachpal.io",
-  // },
+  openGraph: {
+    type: "website",
+    locale: "en_UK",
+    url: "https://coachos.fit",
+    title: "Coach OS | AI-native fitness coaching.",
+    description: "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
+    siteName: "Coach OS",
+    images: [
+      {
+        url: "/coach-os-opengraph-image.png", 
+        width: 1200,
+        height: 630,
+        alt: "Coach OS - AI-native fitness coaching.",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coach OS | AI-native fitness coaching.",
+    description: "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
+    images: ["/coach-os-opengraph-image.png"], 
+  },
+  alternates: {
+    canonical: "https://coachos.fit",
+  },
   robots: {
     index: true,
     follow: true,
