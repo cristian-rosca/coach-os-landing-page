@@ -68,7 +68,7 @@ background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
 
 **Feature Descriptions**:
 - **Voice-First Design**: Natural conversation instead of form filling
-- **AI Programme Builder**: Describe adjustments and watch AI implement them
+- **AI Program Builder**: Describe adjustments and watch AI implement them
 - **Smart Insights**: Pattern detection across multiple data sources
 - **Client Engagement**: Simple interfaces that clients actually use
 - **Data Integration**: Connect existing tools and wearables seamlessly

@@ -18,9 +18,9 @@ const features = [
     icon: MicrophoneIcon,
   },
   {
-    name: "AI Programme Builder",
+    name: "AI Program Builder",
     description:
-      "Describe adjustments and watch AI implement them. Generate and modify training programmes through natural language, saving hours of manual programming.",
+      "Describe adjustments and watch AI implement them. Generate and modify training programs through natural language, saving hours of manual programming.",
     icon: CpuChipIcon,
   },
   {
