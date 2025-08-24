@@ -7,7 +7,7 @@ import {
   LinkIcon,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import screenshot from "../img/coach-os-screenshot.png";
+import screenshot from "../img/coach-os-screenshot.webp";
 import { forwardRef } from "react";
 
 const features = [
