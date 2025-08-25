@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Coach OS",
     images: [
       {
-        url: "https://www.coachos.fit/coach-os-opengraph-image.webp", 
+        url: "https://www.coachos.fit/og.webp", 
         width: 1200,
         height: 630,
         alt: "Coach OS - AI-native fitness coaching.",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Coach OS | AI-native fitness coaching.",
     description: "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
     images: {
-      url: "https://www.coachos.fit/coach-os-opengraph-image.webp",
+      url: "https://www.coachos.fit/og.webp",
       width: 1200,
       height: 630,
       alt: "Coach OS - AI-native fitness coaching.",
