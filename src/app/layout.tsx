@@ -5,6 +5,7 @@ import { Container } from "./landing-page/Container";
 import LandingPageNavigation from "./landing-page/LandingPageNavigation";
 import Footer from "./landing-page/Footer";
 import clsx from "clsx";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.coachos.fit"),
@@ -22,27 +23,29 @@ export const metadata: Metadata = {
     locale: "en_UK",
     url: "https://www.coachos.fit",
     title: "Coach OS | AI-native fitness coaching.",
-    description: "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
+    description:
+      "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
     siteName: "Coach OS",
     images: [
       {
-        url: "https://www.coachos.fit/og.webp", 
+        url: "https://www.coachos.fit/og.webp",
         width: 1200,
         height: 630,
         alt: "Coach OS - AI-native fitness coaching.",
-      }
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Coach OS | AI-native fitness coaching.",
-    description: "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
+    description:
+      "AI-first fitness coaching software that saves you hours of manual labour, and helps your clients track in whatever way suits them best.",
     images: {
       url: "https://www.coachos.fit/og.webp",
       width: 1200,
       height: 630,
       alt: "Coach OS - AI-native fitness coaching.",
-    } 
+    },
   },
   alternates: {
     canonical: "https://www.coachos.fit",
@@ -66,6 +69,11 @@ export default function PublicLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <Script
+        async
+        src="https://cloud.umami.is/script.js"
+        data-website-id="984f0140-b64b-4377-ad96-f116871ec904"
+      />
       <body className={clsx("flex min-h-screen flex-col")}>
         <div className="relative isolate overflow-hidden">
           <BackgroundPattern />
